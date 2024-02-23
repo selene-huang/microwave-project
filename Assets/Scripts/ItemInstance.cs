@@ -13,7 +13,7 @@ public class ItemInstance : MonoBehaviour
     
     void Start()
     {
-        m_name = GetComponent<Text>();
+        m_name = this.GetComponentInChildren<Text>();
         m_image = GetComponent<Image>();
         m_name.text = m_itemInfo.Name;
         m_image.sprite = m_itemInfo.Sprite;
