@@ -5,21 +5,21 @@ using System.Net.NetworkInformation;
 using System.Reflection;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-public struct ItemInformation
+public class ItemInformation
 {
-    public int ID;
+    public string name;
     public bool discovered;
     public bool isFinal;
 
-    public ItemInformation(int id, bool isDiscovered) {
-        ID = id;
+    public ItemInformation(string n, bool isDiscovered) {
+        name = n;
         discovered = isDiscovered;
         isFinal = false;
     }
 
-    public ItemInformation(int id, bool isDiscovered, bool finalItem)
+    public ItemInformation(string n, bool isDiscovered, bool finalItem)
     {
-        ID = id;
+        name = n;
         discovered = isDiscovered;
         isFinal = finalItem;
     }
@@ -27,7 +27,7 @@ public struct ItemInformation
 
 public class GameManager : MonoBehaviour
 {
-    private static Dictionary<string, ItemInformation> items;
+    private static List<ItemInformation> items;
     public static GameManager Instance = null;
 
     #region Unity Functions
@@ -36,38 +36,38 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            items = new Dictionary<string, ItemInformation>
+            items = new List<ItemInformation>
             {
-                {"Water", new ItemInformation(0, true) },
-                {"Egg" , new ItemInformation(1, true) },
-                {"Spoon", new ItemInformation(2, true) },
-                {"Knife", new ItemInformation(3, false) },
-                {"Fork", new ItemInformation(4, false) },
-                {"Life", new ItemInformation(5, false) },
-                {"Steam", new ItemInformation(6, false) },
-                {"Fire", new ItemInformation(7, false) },
-                {"Rabbit", new ItemInformation(8, false) },
-                {"Fish", new ItemInformation(9, false) },
-                {"Flamingo", new ItemInformation(10, false) },
-                {"Shrimp", new ItemInformation(11, false, true) },
-                {"Charcoal", new ItemInformation(12, false) },
-                {"Black Rabbit", new ItemInformation(13, false, true) },
-                {"Black Flamingo", new ItemInformation(14,false, true) },
-                {"Breakfast", new ItemInformation(15, false, true) },
-                {"Dinner", new ItemInformation(16, false, true) },
-                {"Steamed Egg", new ItemInformation(17, false, true) },
-                {"Cancer", new ItemInformation(18, false, true) },
-                {"Pink Egg", new ItemInformation(19, false, true) },
-                {"Black Egg", new ItemInformation(20, false, true) },
-                {"Bad Egg", new ItemInformation(21, false, true) },
-                {"Roe",  new ItemInformation(22, false, true) },
-                {"Home", new ItemInformation(23, false, true) },
-                {"Bill", new ItemInformation(24, false, true) },
-                {"Living Spoon", new ItemInformation(25, false, true) },
-                {"Living Knife",  new ItemInformation(26, false, true) },
-                {"Living Fork", new ItemInformation(27, false, true) },
-                {"Flying Rabbit", new ItemInformation(28, false, true) },
-                {"Flying Fish", new ItemInformation(29, false, true) },
+                {new ItemInformation("Water", true) },
+                {new ItemInformation("Egg", true) },
+                {new ItemInformation("Spoon", true) },
+                {new ItemInformation("Knife", false) },
+                {new ItemInformation("Fork", false) },
+                {new ItemInformation("Life", false) },
+                {new ItemInformation("Steam", false) },
+                {new ItemInformation("Fire", false) },
+                {new ItemInformation("Rabbit", false) },
+                {new ItemInformation("Fish", false) },
+                {new ItemInformation("Flamingo", false) },
+                {new ItemInformation("Shrimp", false, true) },
+                {new ItemInformation("Charcoal", false) },
+                {new ItemInformation("Black Rabbit", false, true) },
+                {new ItemInformation("Black Flamingo", false, true) },
+                {new ItemInformation("Breakfast", false, true) },
+                {new ItemInformation("Dinner", false, true) },
+                {new ItemInformation("Steamed Egg", false, true) },
+                {new ItemInformation("Cancer", false, true) },
+                {new ItemInformation("Pink Egg", false, true) },
+                {new ItemInformation("Black Egg", false, true) },
+                {new ItemInformation("Bad Egg", false, true) },
+                {new ItemInformation("Roe", false, true) },
+                {new ItemInformation("Home", false, true) },
+                {new ItemInformation("Bill", false, true) },
+                {new ItemInformation("Living Spoon", false, true) },
+                {new ItemInformation("Living Knife", false, true) },
+                {new ItemInformation("Living Fork", false, true) },
+                {new ItemInformation("Flying Rabbit", false, true) },
+                {new ItemInformation("Flying Fish", false, true) },
             };
         }
         else if (Instance != this)
@@ -86,9 +86,6 @@ public class GameManager : MonoBehaviour
     }
     public void Discover(string item)
     {
-        if (items.TryGetValue(item, out ItemInformation val))
-        {
-            val.discovered = true;
-        }
+        items.Find(i => i.name.Equals(item)).discovered = true;
     }
 }
