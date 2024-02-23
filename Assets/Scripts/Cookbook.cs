@@ -16,8 +16,14 @@ public class Cookbook : MonoBehaviour
     private GameManager gm;
     private GameObject backButton;
     private GameObject nextButton;
-    private GameObject leftGrid;
-    private GameObject rightGrid;
+    private Transform leftGrid;
+    private Transform rightGrid;
+
+    private List<CookbookItem> displayItemList;
+
+    [SerializeField]
+    [Tooltip("Object used to display each item")]
+    private CookbookItem cookbookItem;
     #endregion
 
     #region Unity Functions
@@ -26,8 +32,10 @@ public class Cookbook : MonoBehaviour
         this.gameObject.SetActive(false);
         backButton = this.gameObject.transform.Find("BackButton").gameObject;
         nextButton = this.gameObject.transform.Find("NextButton").gameObject;
-        leftGrid = this.gameObject.transform.Find("LeftGrid").gameObject;
-        rightGrid = this.gameObject.transform.Find("RightGrid").gameObject;
+
+        leftGrid = this.gameObject.transform.Find("LeftGrid");
+        rightGrid = this.gameObject.transform.Find("RightGrid");
+        displayItemList = new List<CookbookItem>();
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         totalItems = gm.GetNumItems();
@@ -74,9 +82,29 @@ public class Cookbook : MonoBehaviour
 
     private void PopulatePages()
     {
+        foreach (CookbookItem i in displayItemList)
+        {
+            Destroy(i);
+        }
+        displayItemList.Clear();
+
+        Transform currGrid = leftGrid;
         for (int i = 0; i < itemsPerPage * 2; i++)
         {
+            int itemIndex = currPage * itemsPerPage + i;
+            if (itemIndex >= totalItems)
+            {
+                break;
+            } else if (i == itemsPerPage)
+            {
+                currGrid = rightGrid;
+            }
 
+            ItemInfo currItem = gm.GetItem(itemIndex);
+            CookbookItem newItem = Instantiate(cookbookItem, currGrid);
+
+            
+            displayItemList.Add(newItem);
         }
     }
     #endregion
