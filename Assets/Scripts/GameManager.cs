@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            items = Resources.LoadAll<ItemInfo>("Items");
+            items = Resources.LoadAll<ItemInfo>("Items/");
         }
         else if (Instance != this)
         {

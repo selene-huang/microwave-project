@@ -10,6 +10,9 @@ public class Cookbook : MonoBehaviour
     private int totalPages;
     private int totalItems;
     private int itemsPerPage = 6;
+    [SerializeField]
+    [Tooltip("Sprite for unknown items")]
+    private Sprite unknownSprite;
     #endregion
 
     #region Game Object Variables
@@ -18,12 +21,6 @@ public class Cookbook : MonoBehaviour
     private GameObject nextButton;
     private Transform leftGrid;
     private Transform rightGrid;
-
-    private List<CookbookItem> displayItemList;
-
-    [SerializeField]
-    [Tooltip("Object used to display each item")]
-    private CookbookItem cookbookItem;
     #endregion
 
     #region Unity Functions
@@ -35,9 +32,8 @@ public class Cookbook : MonoBehaviour
 
         leftGrid = this.gameObject.transform.Find("LeftGrid");
         rightGrid = this.gameObject.transform.Find("RightGrid");
-        displayItemList = new List<CookbookItem>();
 
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         totalItems = gm.GetNumItems();
         totalPages = (int) System.Math.Ceiling(1.0 * totalItems / itemsPerPage);
     }
@@ -47,8 +43,8 @@ public class Cookbook : MonoBehaviour
     public void OpenBook()
     {
         this.gameObject.SetActive(true);
-        backButton.SetActive(false);
         currPage = 0;
+        PopulatePages();
     }
 
     public void CloseBook()
@@ -59,52 +55,70 @@ public class Cookbook : MonoBehaviour
     public void NextPage()
     {
         currPage += 2;
-        if (currPage >= totalPages)
-        {
-            nextButton.SetActive(false);
-        } else if (currPage > 0)
-        {
-            backButton.SetActive(true);
-        }
+        PopulatePages();
     }
 
     public void PrevPage()
     {
         currPage -= 2;
-        if (currPage == 0)
-        {
-            backButton.SetActive(false);
-        }  else if (currPage < totalPages)
-        { 
-            nextButton.SetActive(true); 
-        }
+        PopulatePages();
     }
 
     private void PopulatePages()
     {
-        foreach (CookbookItem i in displayItemList)
-        {
-            Destroy(i);
-        }
-        displayItemList.Clear();
+        backButton.SetActive(currPage != 0);
+        nextButton.SetActive(currPage + 1 < totalPages);
 
-        Transform currGrid = leftGrid;
-        for (int i = 0; i < itemsPerPage * 2; i++)
+
+        for (int i = 0; i < itemsPerPage; i++)
         {
             int itemIndex = currPage * itemsPerPage + i;
             if (itemIndex >= totalItems)
             {
-                break;
-            } else if (i == itemsPerPage)
-            {
-                currGrid = rightGrid;
+                leftGrid.GetChild(i).gameObject.SetActive(false);
             }
+            else
+            {
+                ItemInfo currItem = gm.GetItem(itemIndex);
+                GameObject currDisplay = leftGrid.GetChild(i).gameObject;
+                CookbookItem currDisplayItem = (CookbookItem)currDisplay.GetComponent("CookbookItem");
 
-            ItemInfo currItem = gm.GetItem(itemIndex);
-            CookbookItem newItem = Instantiate(cookbookItem, currGrid);
+                // if (discovered) { 
+                currDisplayItem.SetSprite(currItem.Sprite);
+                currDisplayItem.SetName(currItem.Name);
+                /* } else {
+                 * currDisplayItem.SetSprite(unknownSprite);
+                 * currDisplayItem.SetName("???");
+                 * }
+                */
 
-            
-            displayItemList.Add(newItem);
+                leftGrid.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+        for (int i = 0; i < itemsPerPage; i++)
+        {
+            int itemIndex = (currPage + 1) * itemsPerPage + i;
+            if (itemIndex >= totalItems)
+            {
+                rightGrid.GetChild(i).gameObject.SetActive(false);
+            }
+            else
+            {
+                ItemInfo currItem = gm.GetItem(itemIndex);
+                GameObject currDisplay = rightGrid.GetChild(i).gameObject;
+                CookbookItem currDisplayItem = (CookbookItem)currDisplay.GetComponent("CookbookItem");
+
+                // if (discovered) { 
+                currDisplayItem.SetSprite(currItem.Sprite);
+                currDisplayItem.SetName(currItem.Name);
+                /* } else {
+                 * currDisplayItem.SetSprite(unknownSprite);
+                 * currDisplayItem.SetName("???");
+                 * }
+                */
+
+                rightGrid.GetChild(i).gameObject.SetActive(true);
+            }
         }
     }
     #endregion

@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CookbookItem : MonoBehaviour
 {
-    private SpriteRenderer sr;
+    private Image img;
+    private TextMeshProUGUI txt;
 
     void Start()
     {
-        sr = gameObject.GetComponent<SpriteRenderer>();
+        foreach (Image i in GetComponentsInChildren<Image>())
+        {
+            if (i.name == "Sprite")
+            {
+                img = i;
+                break;
+            }
+        }
+        txt = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void SetSprite(Sprite sprite)
     {
-        sr.sprite = sprite;
+        img.sprite = sprite;
+    }
+
+    public void SetName(string name)
+    {
+        txt.text = name;
     }
 }
