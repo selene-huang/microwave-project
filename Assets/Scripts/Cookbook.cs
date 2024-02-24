@@ -27,6 +27,7 @@ public class Cookbook : MonoBehaviour
     void Start()
     {
         this.gameObject.SetActive(false);
+
         backButton = this.gameObject.transform.Find("BackButton").gameObject;
         nextButton = this.gameObject.transform.Find("NextButton").gameObject;
 
@@ -69,7 +70,6 @@ public class Cookbook : MonoBehaviour
         backButton.SetActive(currPage != 0);
         nextButton.SetActive(currPage + 1 < totalPages);
 
-
         for (int i = 0; i < itemsPerPage; i++)
         {
             int itemIndex = currPage * itemsPerPage + i;
@@ -90,7 +90,6 @@ public class Cookbook : MonoBehaviour
                     currDisplayItem.SetSprite(unknownSprite);
                     currDisplayItem.SetName("???");
                 }
-
 
                 leftGrid.GetChild(i).gameObject.SetActive(true);
             }
@@ -116,7 +115,6 @@ public class Cookbook : MonoBehaviour
                     currDisplayItem.SetName("???");
                 }
                 
-
                 rightGrid.GetChild(i).gameObject.SetActive(true);
             }
         }
