@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Combiner : MonoBehaviour
 {
-    [SerializeField]
-    private List<Recipe> recipes;
+    private Recipe[] recipes;
     public static Combiner combinerSingelton { get; private set; }
+    private GameManager gm;
+
     [SerializeField]
     private Slot resultSlot;
     [SerializeField]
@@ -16,7 +18,6 @@ public class Combiner : MonoBehaviour
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
-
         if (combinerSingelton != null && combinerSingelton!= this)
         {
             Destroy(this);
@@ -24,24 +25,21 @@ public class Combiner : MonoBehaviour
         else
         {
             combinerSingelton = this;
+            recipes = Resources.LoadAll<Recipe>("Recipes/");
+            gm = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         }
     }
 
     public void combine(ItemInfo i1, ItemInfo i2)
     {
-        Combination combo = new Combination(i1,i2);
-        Combination reverseCombo = new Combination(i2, i1);
         foreach (Recipe recipe in recipes)
         {
-            //if (recipe.combinations.Contains(combo) || recipe.combinations.Contains(reverseCombo)){
-            // SpawnNewItem(recipe.Result);
-            //}
             foreach(Combination combination in recipe.combinations)
             {
                 if((combination.i1 == i1 && combination.i2 == i2) || (combination.i1 == i2 && combination.i2 == i1))
                 {
                     SpawnNewItem(recipe.Result);
-                    recipe.Result.SetIsDiscovered(true);
+                    gm.Discover(recipe.Result.Name);
                 }
             }
         }

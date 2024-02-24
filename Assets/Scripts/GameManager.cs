@@ -5,10 +5,12 @@ using System.Net.NetworkInformation;
 using System.Reflection;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private static ItemInfo[] items;
+    private static int numDiscovered = 0;
     public static GameManager Instance = null;
 
     #region Unity Functions
@@ -18,6 +20,13 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             items = Resources.LoadAll<ItemInfo>("Items/");
+            foreach (ItemInfo i in items)
+            {
+                if (i.IsDiscovered)
+                {
+                    numDiscovered++;
+                }
+            }
         }
         else if (Instance != this)
         {
@@ -34,6 +43,11 @@ public class GameManager : MonoBehaviour
         return items.Length;
     }
 
+    public int GetNumDiscoveredItems()
+    {
+        return numDiscovered;
+    }
+
     public ItemInfo GetItem(int i)
     {
         return items[i];
@@ -44,8 +58,22 @@ public class GameManager : MonoBehaviour
         {
             if (items[i].name == item)
             {
+                if (!items[i].IsDiscovered)
+                {
+                    numDiscovered++;
+                }
                 items[i].SetIsDiscovered(true);
             }
         }
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void WinGame()
+    {
+        SceneManager.LoadScene("WinScene");
     }
 }
