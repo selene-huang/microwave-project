@@ -3,11 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Drag : MonoBehaviour, IDragHandler
+public class Drag : MonoBehaviour
 {
-    public void OnDrag(PointerEventData eventData)
+    
+    Vector3 mousePosition;
+    public MicrowaveItems microwave;
+
+    public void Start()
     {
-        transform.position = eventData.position;
+        microwave = GameObject.FindAnyObjectByType<MicrowaveItems>();
     }
+
+    private Vector3 MouseWorldPos()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    private void OnMouseDown()
+    {
+        microwave.HeldItem = gameObject;
+        mousePosition = gameObject.transform.position - MouseWorldPos();
+    }
+
+    private void OnMouseDrag()
+    {
+        transform.position = MouseWorldPos() + mousePosition;
+    }
+
 
 }
