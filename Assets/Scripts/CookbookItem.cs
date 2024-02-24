@@ -9,13 +9,13 @@ public class CookbookItem : MonoBehaviour
     private Image img;
     private TextMeshProUGUI txt;
 
-    void Start()
+    void Awake()
     {
         foreach (Image i in GetComponentsInChildren<Image>())
         {
             if (i.name == "Sprite")
             {
-                img = i;
+                img = i; 
                 break;
             }
         }

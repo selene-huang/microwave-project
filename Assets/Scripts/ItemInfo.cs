@@ -12,6 +12,8 @@ public class ItemInfo : ScriptableObject
     private Sprite m_sprite;
     [SerializeField]
     private string m_description;
+    [SerializeField]
+    private bool m_isDiscovered;
     
     public string Name { 
         get { 
@@ -28,5 +30,18 @@ public class ItemInfo : ScriptableObject
         get { 
             return m_description; 
         }
+    }
+
+    public bool IsDiscovered
+    {
+        get
+        {
+            return m_isDiscovered;
+        }
+    }
+
+    public void SetIsDiscovered(bool d)
+    {
+        m_isDiscovered = d;
     }
 }

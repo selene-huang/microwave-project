@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         {
             if (items[i].name == item)
             {
-                // TODO: items[i].discovered = true;
+                items[i].SetIsDiscovered(true);
             }
         }
     }

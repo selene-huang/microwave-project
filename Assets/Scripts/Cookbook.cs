@@ -27,6 +27,7 @@ public class Cookbook : MonoBehaviour
     void Start()
     {
         this.gameObject.SetActive(false);
+
         backButton = this.gameObject.transform.Find("BackButton").gameObject;
         nextButton = this.gameObject.transform.Find("NextButton").gameObject;
 
@@ -69,7 +70,6 @@ public class Cookbook : MonoBehaviour
         backButton.SetActive(currPage != 0);
         nextButton.SetActive(currPage + 1 < totalPages);
 
-
         for (int i = 0; i < itemsPerPage; i++)
         {
             int itemIndex = currPage * itemsPerPage + i;
@@ -83,14 +83,13 @@ public class Cookbook : MonoBehaviour
                 GameObject currDisplay = leftGrid.GetChild(i).gameObject;
                 CookbookItem currDisplayItem = (CookbookItem)currDisplay.GetComponent("CookbookItem");
 
-                // if (discovered) { 
-                currDisplayItem.SetSprite(currItem.Sprite);
-                currDisplayItem.SetName(currItem.Name);
-                /* } else {
-                 * currDisplayItem.SetSprite(unknownSprite);
-                 * currDisplayItem.SetName("???");
-                 * }
-                */
+                if (currItem.IsDiscovered) { 
+                    currDisplayItem.SetSprite(currItem.Sprite);
+                    currDisplayItem.SetName(currItem.Name);
+                } else {
+                    currDisplayItem.SetSprite(unknownSprite);
+                    currDisplayItem.SetName("???");
+                }
 
                 leftGrid.GetChild(i).gameObject.SetActive(true);
             }
@@ -108,15 +107,14 @@ public class Cookbook : MonoBehaviour
                 GameObject currDisplay = rightGrid.GetChild(i).gameObject;
                 CookbookItem currDisplayItem = (CookbookItem)currDisplay.GetComponent("CookbookItem");
 
-                // if (discovered) { 
-                currDisplayItem.SetSprite(currItem.Sprite);
-                currDisplayItem.SetName(currItem.Name);
-                /* } else {
-                 * currDisplayItem.SetSprite(unknownSprite);
-                 * currDisplayItem.SetName("???");
-                 * }
-                */
-
+                if (currItem.IsDiscovered) { 
+                    currDisplayItem.SetSprite(currItem.Sprite);
+                    currDisplayItem.SetName(currItem.Name);
+                } else {
+                    currDisplayItem.SetSprite(unknownSprite);
+                    currDisplayItem.SetName("???");
+                }
+                
                 rightGrid.GetChild(i).gameObject.SetActive(true);
             }
         }
