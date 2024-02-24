@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e7e2ce57cfe784b97013f159c676f2, type: 3}
+  m_Name: FlyingRabbit_Recipe
+  m_EditorClassIdentifier: 
+  _result: {fileID: 11400000, guid: 88f0d04823ce9304aaa358da38482c7b, type: 2}
+  combinations:
+  - i1: {fileID: 11400000, guid: 5219a8ed4d42907438602dfc08210af2, type: 2}
+    i2: {fileID: 11400000, guid: a7a9c972fff6ebe418d60098115062b8, type: 2}
