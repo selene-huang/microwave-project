@@ -8,7 +8,7 @@ public class Slot : MonoBehaviour
     public ItemInfo itemInfo;
     public int slotIndex;
     public SpriteRenderer spriteRenderer;
-
+    public Sprite defaultSprite;
     public void ReciveData(ItemInfo itemInfo)
     {
         this.itemInfo = itemInfo;
