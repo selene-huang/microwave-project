@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e7e2ce57cfe784b97013f159c676f2, type: 3}
+  m_Name: Life_Recipe
+  m_EditorClassIdentifier: 
+  _result: {fileID: 11400000, guid: 992b4ba5bc40aa24fa5b377147ad7a72, type: 2}
+  combinations:
+  - i1: {fileID: 11400000, guid: a7b65421f08b485459a5c37b27b68ec8, type: 2}
+    i2: {fileID: 11400000, guid: 68e9a9f6d1935c84798ac18143c184c1, type: 2}
