@@ -15,4 +15,4 @@ MonoBehaviour:
   m_name: Knife
   m_sprite: {fileID: 21300000, guid: 2de45639a90e71843b5454b3771a937e, type: 3}
   m_description: 
-  m_isDiscovered: 1
+  m_isDiscovered: 0

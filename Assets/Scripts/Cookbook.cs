@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cookbook : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Cookbook : MonoBehaviour
     private GameManager gm;
     private GameObject backButton;
     private GameObject nextButton;
+    private Button cookbookButton;
     private Transform leftGrid;
     private Transform rightGrid;
     #endregion
@@ -30,6 +32,7 @@ public class Cookbook : MonoBehaviour
 
         backButton = this.gameObject.transform.Find("BackButton").gameObject;
         nextButton = this.gameObject.transform.Find("NextButton").gameObject;
+        cookbookButton = GameObject.FindWithTag("CookbookButton").GetComponent<Button>();
 
         leftGrid = this.gameObject.transform.Find("LeftGrid");
         rightGrid = this.gameObject.transform.Find("RightGrid");
@@ -46,11 +49,13 @@ public class Cookbook : MonoBehaviour
         this.gameObject.SetActive(true);
         currPage = 0;
         PopulatePages();
+        cookbookButton.interactable = false;
     }
 
     public void CloseBook()
     {
         this.gameObject.SetActive(false);
+        cookbookButton.interactable = true;
     }
 
     public void NextPage()
