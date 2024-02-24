@@ -83,14 +83,14 @@ public class Cookbook : MonoBehaviour
                 GameObject currDisplay = leftGrid.GetChild(i).gameObject;
                 CookbookItem currDisplayItem = (CookbookItem)currDisplay.GetComponent("CookbookItem");
 
-                // if (discovered) { 
-                currDisplayItem.SetSprite(currItem.Sprite);
-                currDisplayItem.SetName(currItem.Name);
-                /* } else {
-                 * currDisplayItem.SetSprite(unknownSprite);
-                 * currDisplayItem.SetName("???");
-                 * }
-                */
+                if (currItem.IsDiscovered) { 
+                    currDisplayItem.SetSprite(currItem.Sprite);
+                    currDisplayItem.SetName(currItem.Name);
+                } else {
+                    currDisplayItem.SetSprite(unknownSprite);
+                    currDisplayItem.SetName("???");
+                }
+
 
                 leftGrid.GetChild(i).gameObject.SetActive(true);
             }
@@ -108,14 +108,14 @@ public class Cookbook : MonoBehaviour
                 GameObject currDisplay = rightGrid.GetChild(i).gameObject;
                 CookbookItem currDisplayItem = (CookbookItem)currDisplay.GetComponent("CookbookItem");
 
-                // if (discovered) { 
-                currDisplayItem.SetSprite(currItem.Sprite);
-                currDisplayItem.SetName(currItem.Name);
-                /* } else {
-                 * currDisplayItem.SetSprite(unknownSprite);
-                 * currDisplayItem.SetName("???");
-                 * }
-                */
+                if (currItem.IsDiscovered) { 
+                    currDisplayItem.SetSprite(currItem.Sprite);
+                    currDisplayItem.SetName(currItem.Name);
+                } else {
+                    currDisplayItem.SetSprite(unknownSprite);
+                    currDisplayItem.SetName("???");
+                }
+                
 
                 rightGrid.GetChild(i).gameObject.SetActive(true);
             }

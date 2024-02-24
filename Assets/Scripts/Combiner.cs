@@ -41,6 +41,7 @@ public class Combiner : MonoBehaviour
                 if((combination.i1 == i1 && combination.i2 == i2) || (combination.i1 == i2 && combination.i2 == i1))
                 {
                     SpawnNewItem(recipe.Result);
+                    recipe.Result.SetIsDiscovered(true);
                 }
             }
         }
