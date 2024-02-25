@@ -30,7 +30,8 @@ public class MicrowaveItems : MonoBehaviour
         if (slots[0].GetComponent<Slot>().itemInfo == null && slots[1].GetComponent<Slot>().itemInfo == null)
         {
             animator.SetBool("Occupied", false);
-        } else
+        }
+        else
         {
             animator.SetBool("Occupied", true);
         }
