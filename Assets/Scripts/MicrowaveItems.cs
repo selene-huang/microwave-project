@@ -36,11 +36,11 @@ public class MicrowaveItems : MonoBehaviour
             animator.SetBool("Occupied", true);
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
             if (HeldItem)
             {
-                Slot closestSlot = null;
+                /*Slot closestSlot = null;
                 float minDistance = 1;
                 float currDist = float.MaxValue;
                 foreach (Slot slot in slots)
@@ -61,16 +61,16 @@ public class MicrowaveItems : MonoBehaviour
                     closestSlot.ReciveData(HeldItem.GetComponent<ItemInstance>().ItemInfo);
                     //closestSlot.itemInstance = Instantiate(HeldItem, closestSlot.transform.position, Quaternion.identity)
                     closestSlot.spriteRenderer.sprite = closestSlot.itemInfo.Sprite;
-                }
+                }*/
                 if (slots[0].itemInfo == null)
                 {
-                    //slots[0].ReciveData(HeldItem.GetComponent<ItemInstance>().ItemInfo);
-                    //slots[0].spriteRenderer.sprite = slots[0].itemInfo.Sprite;
+                    slots[0].ReciveData(HeldItem.GetComponent<ItemInstance>().ItemInfo);
+                    slots[0].spriteRenderer.sprite = slots[0].itemInfo.Sprite;
                 }
                 else if (slots[1].itemInfo == null)
                 {
-                    //slots[1].ReciveData(HeldItem.GetComponent<ItemInstance>().ItemInfo);
-                    //slots[1].spriteRenderer.sprite = slots[1].itemInfo.Sprite;
+                    slots[1].ReciveData(HeldItem.GetComponent<ItemInstance>().ItemInfo);
+                    slots[1].spriteRenderer.sprite = slots[1].itemInfo.Sprite;
                 }
             }
             HeldItem = null;
