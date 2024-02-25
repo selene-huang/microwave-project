@@ -14,15 +14,28 @@ public class MicrowaveItems : MonoBehaviour
     public GameObject HeldItem;
     [SerializeField] 
     public Combiner combiner;
+    [SerializeField]
+    public GameObject microwave;
+    Animator animator;
 
     private void Start()
     {
         combiner = gameObject.GetComponent<Combiner>();
+        animator = microwave.GetComponent<Animator>();
     }
 
  
     private void Update()
     {
+        if (slots[0].GetComponent<Slot>().itemInfo == null && slots[1].GetComponent<Slot>().itemInfo == null)
+        {
+            animator.SetBool("Occupied", false);
+        }
+        else
+        {
+            animator.SetBool("Occupied", true);
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
             if (HeldItem)
