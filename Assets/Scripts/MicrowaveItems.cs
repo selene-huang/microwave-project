@@ -69,8 +69,8 @@ public class MicrowaveItems : MonoBehaviour
     {
         ItemInfo i1 = slots[0].itemInfo;
         ItemInfo i2 = slots[1].itemInfo;
-        combiner.combine(i1, i2);
         ClearSlots();
+        combiner.combine(i1, i2);
     }
     public void ClearSlots()
     {
@@ -78,7 +78,7 @@ public class MicrowaveItems : MonoBehaviour
         {
             //Destroy(slot.gameObject);
             slot.itemInfo = null;
-            slot.spriteRenderer.sprite = null;
+            slot.spriteRenderer.sprite = slot.defaultSprite;
         }
     }
 
