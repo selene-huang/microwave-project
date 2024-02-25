@@ -12,11 +12,10 @@ public class ItemInstance : MonoBehaviour
 
     private SpriteRenderer m_sprite;
     
-    void Start()
+    void Awake()
     {
         m_name = this.GetComponent<TextMeshPro>();
         m_sprite = GetComponent<SpriteRenderer>();
-        // m_name.text = m_itemInfo.Name;
         m_sprite.sprite = m_itemInfo.Sprite;
     }
 

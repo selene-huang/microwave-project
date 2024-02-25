@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
                     numDiscovered++;
                 }
                 items[i].SetIsDiscovered(true);
+
+                Debug.Log("Match found");
             }
         }
     }

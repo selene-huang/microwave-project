@@ -40,6 +40,7 @@ public class Combiner : MonoBehaviour
                 {
                     SpawnNewItem(recipe.Result);
                     gm.Discover(recipe.Result.Name);
+                    Debug.Log("Discovering " + recipe.Result.Name);
                 }
             }
         }
