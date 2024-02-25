@@ -56,16 +56,20 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < items.Length; i++)
         {
-            if (items[i].name == item)
+            if (items[i].Name == item)
             {
                 if (!items[i].IsDiscovered)
                 {
                     numDiscovered++;
                 }
                 items[i].SetIsDiscovered(true);
-
-                Debug.Log("Match found");
+                break;
             }
+        }
+
+        if (numDiscovered >= GetNumItems())
+        {
+            WinGame();
         }
     }
 
