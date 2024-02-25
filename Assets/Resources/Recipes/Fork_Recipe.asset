@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e7e2ce57cfe784b97013f159c676f2, type: 3}
   m_Name: Fork_Recipe
   m_EditorClassIdentifier: 
-  _result: {fileID: 11400000, guid: 121f7827f718a584680be0b525af0e40, type: 2}
+  _result: {fileID: 11400000, guid: 0fa48006c85520d44adc74fae75cb710, type: 2}
   combinations:
   - i1: {fileID: 11400000, guid: 9ac3c2fff8208d14aa84c2166e4c22b9, type: 2}
     i2: {fileID: 11400000, guid: 121f7827f718a584680be0b525af0e40, type: 2}
