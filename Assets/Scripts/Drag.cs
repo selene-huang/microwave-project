@@ -22,12 +22,12 @@ public class Drag : MonoBehaviour
     private void OnMouseDown()
     {
         microwave.HeldItem = gameObject;
-        mousePosition = gameObject.transform.position - MouseWorldPos();
+        //mousePosition = gameObject.transform.position - MouseWorldPos();
     }
 
     private void OnMouseDrag()
     {
-        transform.position = MouseWorldPos() + mousePosition;
+        //transform.position = MouseWorldPos() + mousePosition;
     }
 
 

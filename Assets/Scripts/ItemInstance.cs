@@ -16,7 +16,7 @@ public class ItemInstance : MonoBehaviour
     {
         m_name = this.GetComponent<TextMeshPro>();
         m_sprite = GetComponent<SpriteRenderer>();
-        m_sprite.sprite = m_itemInfo.Sprite;
+        //m_sprite.sprite = m_itemInfo.Sprite;
     }
 
     // Update is called once per frame
