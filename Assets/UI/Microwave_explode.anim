@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ExplosionAnimation
+  m_Name: Microwave_explode
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,26 +22,26 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 21300000, guid: 8f1f463a3dd9a41b99db41a7bcb49147, type: 3}
-    - time: 0.016666668
-      value: {fileID: 21300000, guid: 608b27c8574de441989b26053b364ceb, type: 3}
-    - time: 0.033333335
-      value: {fileID: 21300000, guid: 5bbde5a9d2d664ce297bff80f0d35003, type: 3}
-    - time: 0.05
-      value: {fileID: 21300000, guid: 6f0585833a11e457683c3f5f698938d4, type: 3}
-    - time: 0.06666667
-      value: {fileID: 21300000, guid: 570c39b5e5a7046ee974d519094875d1, type: 3}
     - time: 0.083333336
+      value: {fileID: 21300000, guid: 608b27c8574de441989b26053b364ceb, type: 3}
+    - time: 0.15
+      value: {fileID: 21300000, guid: 5bbde5a9d2d664ce297bff80f0d35003, type: 3}
+    - time: 0.2
+      value: {fileID: 21300000, guid: 6f0585833a11e457683c3f5f698938d4, type: 3}
+    - time: 0.3
+      value: {fileID: 21300000, guid: 570c39b5e5a7046ee974d519094875d1, type: 3}
+    - time: 0.38333333
       value: {fileID: 21300000, guid: 32764d91021764f519415028f7b26823, type: 3}
-    - time: 0.1
+    - time: 0.43333334
       value: {fileID: 21300000, guid: 310d6d4cd501944d98b94c0b9c13ff7c, type: 3}
-    - time: 0.11666667
+    - time: 0.5
       value: {fileID: 21300000, guid: 33ba8c0e4f1a140098af6b6822dff7be, type: 3}
-    - time: 0.13333334
+    - time: 0.5833333
       value: {fileID: 21300000, guid: 0d4eb1a1745a34982ba6cec93eea60e9, type: 3}
     attribute: m_Sprite
     path: 
-    classID: 114
-    script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+    classID: 212
+    script: {fileID: 0}
     flags: 2
   m_SampleRate: 60
   m_WrapMode: 0
@@ -52,10 +52,10 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 0
-      attribute: 2015549526
-      script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-      typeID: 114
-      customType: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
       isPPtrCurve: 1
       isIntCurve: 0
       isSerializeReferenceCurve: 0
@@ -74,7 +74,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.15
+    m_StopTime: 0.59999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

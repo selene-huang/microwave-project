@@ -51,6 +51,10 @@ public class Combiner : MonoBehaviour
     {
         Debug.Log("Made Something");
         GameObject newItem = Instantiate(base_item, resultSlot.transform.position, Quaternion.identity);
+        //Put item in grid and size it 
+        newItem.transform.parent = GameObject.Find("Grid").transform;
+        newItem.transform.localScale = new Vector3(16, 16, 0);
+        newItem.GetComponent<RectTransform>().sizeDelta = new Vector2(40, 40);
         newItem.GetComponent<ItemInstance>().Convert(itemInfo);
     }
 
